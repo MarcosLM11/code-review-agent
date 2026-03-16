@@ -290,27 +290,33 @@ right layer. Two minor issues were found that should be addressed before merge.
 ```
 src/
 ├── main/java/com/marcos/codereviewagent/
+│   ├── CodeReviewAgentApplication.java
 │   ├── agent/
-│   │   ├── CodeReviewAgent.java        # GOAP agent — 4 @Action methods
-│   │   └── ReviewPersonas.java         # LLM persona definitions
+│   │   ├── CodeReviewAgent.java            # GOAP agent — 4 @Action methods
+│   │   └── ReviewPersonas.java             # LLM persona definitions
 │   ├── application/
-│   │   ├── ReviewController.java       # POST /api/v1/reviews
-│   │   ├── WebhookController.java      # POST /api/v1/webhook
+│   │   ├── ReviewController.java           # POST /api/v1/reviews
+│   │   ├── WebhookController.java          # POST /api/v1/webhook
 │   │   ├── ReviewRequest.java
 │   │   └── ReviewResponse.java
 │   ├── domain/
-│   │   ├── model/                      # Pure value objects (records)
-│   │   ├── port/                       # PullRequestProvider interface
-│   │   └── service/                    # ReviewFormatter
+│   │   ├── model/                          # Pure value objects (records)
+│   │   ├── port/                           # PullRequestProvider interface
+│   │   └── service/                        # ReviewFormatter
 │   ├── infraestructure/
 │   │   ├── GitHubPullRequestAdapter.java
 │   │   ├── GithubConfig.java
 │   │   └── GithubProperties.java
 │   └── shell/
-│       └── ReviewCommands.java         # fetch-pr shell command
+│       └── ReviewCommands.java             # fetch-pr shell command
 └── test/
-    ├── java/.../                       # Unit & integration tests
-    └── testFixtures/java/.../fixtures/ # Shared test factories
+    ├── java/com/marcos/codereviewagent/
+    │   ├── agent/                          # CodeReviewAgentTest
+    │   ├── application/                    # ReviewControllerTest · WebhookControllerTest · WebhookSignatureTest
+    │   ├── architecture/                   # ArchitectureTest (ArchUnit)
+    │   ├── domain/                         # ReviewFormatterTest
+    │   └── infraestructure/                # GitHubPullRequestAdapterTest
+    └── testFixtures/java/.../fixtures/     # Shared test factories (Fixtures · TestUtils)
 ```
 
 ---
