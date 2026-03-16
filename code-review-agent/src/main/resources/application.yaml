@@ -1,0 +1,22 @@
+app:
+  github:
+    token: ${GITHUB_TOKEN:}
+    api-url: https://api.github.com
+  webhook:
+    secret: ${GITHUB_WEBHOOK_SECRET:}
+
+spring:
+  application:
+    name: code-review-agent
+  config:
+    import: optional:file:.env[.properties]
+  main:
+    web-application-type: reactive
+  shell:
+    interactive:
+      enabled: true
+
+embabel:
+  agent:
+    shell:
+      web-application-type: reactive
