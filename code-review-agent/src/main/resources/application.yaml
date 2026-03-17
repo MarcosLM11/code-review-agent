@@ -17,6 +17,16 @@ spring:
       enabled: true
 
 embabel:
+  models:
+    default-llm: gpt-4.1-nano   # Modelo más económico de OpenAI
   agent:
+    platform:
+      models:
+        openai:
+          max-attempts: 3
+          backoff-millis: 2000
+    logging:
+      personality: starwars
+      verbosity: info
     shell:
       web-application-type: reactive
